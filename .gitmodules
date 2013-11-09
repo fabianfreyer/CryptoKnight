@@ -1,0 +1,3 @@
+[submodule "lib/uClibc"]
+	path = lib/uClibc
+	url = git://uclibc.org/uClibc.git
