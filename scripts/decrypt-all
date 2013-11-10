@@ -1,2 +1,2 @@
 #!/bin/sh
-find . -name '*.crypt' -exec ./decrypt {} \; -exec rm {} \; 
+find . -name '*.ssl' -exec ./decrypt-ssl {} \; -exec rm {} \; 

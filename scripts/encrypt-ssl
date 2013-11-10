@@ -1,10 +1,10 @@
 #!/bin/sh
 
 #FIXME put actual environment variables here or adjust $PATH
-OPENSSL=openssl
+OPENSSL=/mnt/sd/bin/openssl
 
 #FIXME make sure this goes in the ramdisk.
-KEYLOC=.
+KEYLOC=/tmp
 
 #Generate keys
 $OPENSSL rand 128 > $KEYLOC/key1.bin
@@ -17,6 +17,6 @@ $OPENSSL rsautl -encrypt -inkey id_rsa.pub.pem -pubin -in $KEYLOC/key2.bin -out 
 #encrypt file
 $OPENSSL enc -aes-256-cbc -salt -in $1 -out $1.enc -pass file:$KEYLOC/key.bin
 
-cat $KEYLOC/key1.bin.enc $KEYLOC/key2.bin.enc $1.enc > $1.crypt
+cat $KEYLOC/key1.bin.enc $KEYLOC/key2.bin.enc $1.enc > $1.ssl
 
 rm $KEYLOC/key1.bin $KEYLOC/key2.bin $KEYLOC/key.bin $KEYLOC/key1.bin.enc $KEYLOC/key2.bin.enc $1.enc
