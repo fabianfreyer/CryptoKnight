@@ -4,3 +4,6 @@
 [submodule "build/buildroot"]
 	path = build/buildroot
 	url = git://git.buildroot.net/buildroot
+[submodule "lib/openssl"]
+	path = lib/openssl
+	url = git://git.openssl.org/openssl.git

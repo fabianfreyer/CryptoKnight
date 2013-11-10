@@ -1,4 +1,13 @@
+TOOLCHAIN=$(CURDIR)/build/toolchain/usr/
 
-buildroot:
+.EXPORT_ALL_VARIABLES:
+
+toolchain:
 	cp build/buildroot_config build/buildroot/.config
 	$(MAKE) -C build/buildroot
+
+tests: toolchain
+	make -e -C tests
+
+libs: toolchain
+	make -e -C lib
