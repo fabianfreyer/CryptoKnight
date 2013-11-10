@@ -11,3 +11,10 @@ tests: toolchain
 
 libs: toolchain
 	make -e -C lib
+
+install:	install-host install-card
+
+install-host: toolchain
+
+install-card: toolchain
+	
