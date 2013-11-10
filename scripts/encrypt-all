@@ -2,10 +2,10 @@
 
 # Some of these might not be where you expect them to be, so provide
 # some way of specifying.
-FIND=/mnt/sd/bin/find
-ENCRYPT=/mnt/sd/bin/encrypt-ssl
+FIND=/cryptonite/find
+ENCRYPT=/cryptonite/encrypt-ssl
 
 # ToDo: use a secure erase method for flash
 RM=rm
 
-$FIND . -name $1 -exec $ENCRYPT {} \; -exec $RM {} \; 
+$FIND . -name '*.JPG' -print -exec $ENCRYPT {} \; -exec $RM {} \; 
