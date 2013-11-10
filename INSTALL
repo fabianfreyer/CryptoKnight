@@ -1,0 +1,5 @@
+1. Run bootstrap.sh from the root directory
+2. make install
+3. copy all the files in the card directory to your card
+4. run generate-keys from the host directory and copy id_rsa.pub.pem to the root of your card.
+
