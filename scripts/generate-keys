@@ -1,0 +1,5 @@
+#generate keys.
+openssl genrsa -out id_rsa 2048
+openssl rsa -in id_rsa -outform pem > id_rsa.pem
+openssl rsa -in id_rsa -pubout -outform pem > id_rsa.pub.pem
+

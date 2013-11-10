@@ -1,0 +1,21 @@
+#!/bin/sh
+
+ENC_SIZE=`wc -c < $1` 
+IMAGE_SIZE=`expr $ENC_SIZE-512`
+FILENAME=${1%.*}
+
+dd if=$1 count=256 bs=1 of=key1.bin.enc
+dd if=$1 count=256 bs=1 skip=256 of=key2.bin.enc
+dd if=$1 bs=1 skip=512 of=$FILENAME.enc
+
+openssl rsautl -decrypt -inkey id_rsa.pem -in key1.bin.enc -out key1.bin
+rm key1.bin.enc
+openssl rsautl -decrypt -inkey id_rsa.pem -in key2.bin.enc -out key2.bin
+rm key2.bin.enc
+
+cat key1.bin key2.bin > key.bin 
+rm key1.bin key2.bin
+
+openssl enc -d -aes-256-cbc -in $FILENAME.enc -out $FILENAME -pass file:./key.bin
+rm key.bin $FILENAME.enc
+
