@@ -1,4 +1,9 @@
+#!/bin/sh
+
+#FIXME put actual environment variables here or adjust $PATH
 OPENSSL=openssl
+
+#FIXME make sure this goes in the ramdisk.
 KEYLOC=.
 
 #Generate keys
