@@ -10,14 +10,12 @@ RANLIB=$(TOOLCHAIN)bin/$(ARCH)-ranlib
 STRIP=$(TOOLCHAIN)bin/$(ARCH)-strip
 
 LDFLAGS=-static
-CFLAGS=
+CFLAGS=-Wno-error
 
 .EXPORT_ALL_VARIABLES:
 
 all: ssl
 
 ssl: openssl
-	cd openssl &&./Configure linux-generic32 -static && cd ..
 	make -e -C openssl 
-
 
