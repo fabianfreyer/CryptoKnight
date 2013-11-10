@@ -1,3 +1,6 @@
 [submodule "lib/uClibc"]
 	path = lib/uClibc
 	url = git://uclibc.org/uClibc.git
+[submodule "build/buildroot"]
+	path = build/buildroot
+	url = git://git.buildroot.net/buildroot
