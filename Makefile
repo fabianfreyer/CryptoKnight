@@ -34,3 +34,14 @@ install-card: toolchain libs
 	install scripts/encrypt* card/CryptoKnight/bin
 	install scripts/watcher card/CryptoKnight/bin
 	install scripts/autorun.sh card
+	
+tarball: card.tar.gz host.tar.gz
+
+card.tar.gz: install-card
+	cd card
+	tar xvzf $@ *
+	cp $@ ..
+	cd ..
+
+host.tar.gz: install-host
+	ctar xvzf $@ host/
