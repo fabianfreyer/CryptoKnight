@@ -1,22 +1,23 @@
 #!/bin/sh
 
-#FIXME put actual environment variables here or adjust $PATH
 OPENSSL=/mnt/sd/bin/openssl
 
-#FIXME make sure this goes in the ramdisk.
-KEYLOC=/tmp
+#make sure this goes in the ramdisk.
+KEYDIR=/tmp
+#The location of the user's public key
+PUBKEY=/mnt/sd/id_rsa.pub.pem
 
 #Generate keys
-$OPENSSL rand 128 > $KEYLOC/key1.bin
-$OPENSSL rand 128 > $KEYLOC/key2.bin
-cat $KEYLOC/key1.bin $KEYLOC/key2.bin > $KEYLOC/key.bin
+$OPENSSL rand 128 > $KEYDIR/key1.bin
+$OPENSSL rand 128 > $KEYDIR/key2.bin
+cat $KEYDIR/key1.bin $KEYDIR/key2.bin > $KEYDIR/key.bin
 
-$OPENSSL rsautl -encrypt -inkey id_rsa.pub.pem -pubin -in $KEYLOC/key1.bin -out $KEYLOC/key1.bin.enc 
-$OPENSSL rsautl -encrypt -inkey id_rsa.pub.pem -pubin -in $KEYLOC/key2.bin -out $KEYLOC/key2.bin.enc
+$OPENSSL rsautl -encrypt -inkey $PUBKEY -pubin -in $KEYDIR/key1.bin -out $KEYDIR/key1.bin.enc 
+$OPENSSL rsautl -encrypt -inkey $PUBKEY -pubin -in $KEYDIR/key2.bin -out $KEYDIR/key2.bin.enc
 
 #encrypt file
-$OPENSSL enc -aes-256-cbc -salt -in $1 -out $1.enc -pass file:$KEYLOC/key.bin
+$OPENSSL enc -aes-256-cbc -salt -in $1 -out $1.enc -pass file:$KEYDIR/key.bin
 
-cat $KEYLOC/key1.bin.enc $KEYLOC/key2.bin.enc $1.enc > $1.ssl
+cat $KEYDIR/key1.bin.enc $KEYDIR/key2.bin.enc $1.enc > $1.ssl
 
-rm $KEYLOC/key1.bin $KEYLOC/key2.bin $KEYLOC/key.bin $KEYLOC/key1.bin.enc $KEYLOC/key2.bin.enc $1.enc
+rm $KEYDIR/key1.bin $KEYDIR/key2.bin $KEYDIR/key.bin $KEYDIR/key1.bin.enc $KEYDIR/key2.bin.enc $1.enc
