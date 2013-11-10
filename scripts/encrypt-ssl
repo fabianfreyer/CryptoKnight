@@ -1,6 +1,6 @@
 #!/bin/sh
 
-OPENSSL=/cryptonite/openssl
+OPENSSL=/CryptoKnight/openssl
 
 #make sure this goes in the ramdisk.
 KEYDIR=/tmp

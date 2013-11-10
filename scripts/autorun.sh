@@ -1,3 +1,3 @@
 rcS6
-cp -R /mnt/sd/cryptonite/bin /cryptonite
-#cp /mnt/sd/cryptonite/etc/openssl.cnf /usr/local/ssl/openssl.cnf
+cp -R /mnt/sd/CryptoKnight/bin /CryptoKnight
+#cp /mnt/sd/CryptoKnight/etc/openssl.cnf /usr/local/ssl/openssl.cnf

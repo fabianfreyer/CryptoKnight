@@ -1,4 +1,4 @@
-TOOLCHAIN=$(CURDIR)/build/toolchain/usr/
+/TOOLCHAIN=$(CURDIR)/build/toolchain/usr/
 
 .EXPORT_ALL_VARIABLES:
 
@@ -21,16 +21,16 @@ install-host: toolchain
 	install scripts/firmware_extract_initrd3.sh host
 
 install-card: toolchain libs
-	install -d card/cryptonite/bin
+	install -d card/CryptoKnight/bin
 	#install buildroot-built binaries
 	install build/buildroot/output/target/usr/bin/gpg \
 		build/buildroot/output/target/usr/bin/gpg-zip \
-		card/cryptonite/bin
-	install build/buildroot/output/target/usr/bin/find card/cryptonite/bin
-	install build/buildroot/output/target/usr/bin/time card/cryptonite/bin
+		card/CryptoKnight/bin
+	install build/buildroot/output/target/usr/bin/find card/CryptoKnight/bin
+	install build/buildroot/output/target/usr/bin/time card/CryptoKnight/bin
 	#install openssl binary
-	install lib/openssl/apps/openssl card/cryptonite/bin
+	install lib/openssl/apps/openssl card/CryptoKnight/bin
 	#install sd-card scripts
-	install scripts/encrypt* card/cryptonite/bin
-	install scripts/watcher card/cryptonite/bin
+	install scripts/encrypt* card/CryptoKnight/bin
+	install scripts/watcher card/CryptoKnight/bin
 	install scripts/autorun.sh card
