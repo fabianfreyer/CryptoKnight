@@ -1,0 +1,10 @@
+#!/bin/sh
+
+
+while [ 1 -eq 1 ]; do
+	cd /mnt/sd
+	/cryptonite/encrypt-all >> /tmp/watcher.log
+	cd ..
+	refresh_sd
+	sleep 1
+done;
