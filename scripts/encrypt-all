@@ -1,2 +1,11 @@
 #!/bin/sh
-find . -name $1 -exec ./encrypt {} \; -exec rm {} \; 
+
+# Some of these might not be where you expect them to be, so provide
+# some way of specifying.
+FIND=find
+ENCRYPT=./encrypt
+
+# ToDo: use a secure erase method for flash
+RM=rm
+
+$FIND . -name $1 -exec $ENCRYPT {} \; -exec $RM {} \; 
