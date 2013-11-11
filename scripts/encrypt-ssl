@@ -1,11 +1,6 @@
 #!/bin/sh
 
-OPENSSL=/CryptoKnight/openssl
-
-#make sure this goes in the ramdisk.
-KEYDIR=/tmp
-#The location of the user's public key
-PUBKEY=/mnt/sd/id_rsa.pub.pem
+OPENSSL=$CK_ROOT/openssl
 
 #Generate keys
 $OPENSSL rand 128 > $KEYDIR/key1.bin

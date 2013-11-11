@@ -1,0 +1,30 @@
+#/bin/sh
+# Encryption method to use. Currently only ssl is implemented.
+#
+# Use openssl aes256 for the plaintext and encrypt the aes keys using RSA.
+ENCRYPTION=ssl
+PUBKEY=/mnt/sd/id_rsa.pub.pem
+# Use gnupg as an encryption tool (Currently not implemented!)
+# ENCRYPTION=gpg
+# PUBKEY=/mnt/sd/key.asc
+
+#The location of the user's public key
+
+# CryptoKnight installation directory. CryptoKnight will be written here
+# during bootstrapping. Unless you know what you're doing, there is no reason
+# to change this.
+CK_ROOT=/CryptoKnight
+
+# Logfile location. This should not be on the sd card, because writing there
+# might block refresh_sd runs.
+LOGFILE=/var/log/cryptoknight.log
+
+# Secure Erase tool
+# FIXME: currently only rm is implemented.
+RM=rm
+
+# Make sure this goes in the ramdisk. For SSL, this is the directory where
+# temporary keys are written.
+KEYDIR=/tmp
+
+# vim: set filetype=sh

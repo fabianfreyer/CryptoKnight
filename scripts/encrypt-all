@@ -1,11 +1,11 @@
 #!/bin/sh
 
+# Read config
+. $(dirname $0)/readconf
+
 # Some of these might not be where you expect them to be, so provide
 # some way of specifying.
-FIND=/CryptoKnight/find
-ENCRYPT=/CryptoKnight/encrypt-ssl
-
-# ToDo: use a secure erase method for flash
-RM=rm
+FIND=$CK_ROOT/find
+ENCRYPT=$CK_ROOT/encrypt-$ENCRYPTION
 
 $FIND . -name '*.JPG' -print -exec $ENCRYPT {} \; -exec $RM {} \; 

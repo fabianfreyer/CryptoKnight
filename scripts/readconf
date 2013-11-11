@@ -1,0 +1,7 @@
+#!/bin/sh
+
+## Load Configuration File
+CONFIG=./cryptoknight.rc
+if [ -f $CONFIG ]; then
+  . $CONFIG
+fi

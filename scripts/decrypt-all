@@ -1,2 +1,4 @@
 #!/bin/sh
-find . -name '*.ssl' -exec ./decrypt-ssl {} \; -exec rm {} \; 
+. $(dirname $0)/readconf
+
+find . -name '*.ssl' -exec ./decrypt-$ENCRYPTION {} \; -exec rm {} \; 
