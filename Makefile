@@ -40,9 +40,9 @@ tarball: card.tar.gz host.tar.gz
 
 card.tar.gz: install-card
 	cd card
-	tar xvzf $@ *
+	tar cvzf $@ *
 	cp $@ ..
 	cd ..
 
 host.tar.gz: install-host
-	tar xvzf $@ host/
+	tar cvzf $@ host/
