@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Check weather the script is running from rootfs
+LOC=$(dirname $0)
+if [ $LOC != /CryptoKnight ]
+then
+  echo "CryptoKnight bootstrapping." >> /var/log/CryptoKinight.log
+  # Copy the binaries to rootfs
+  cp -R /mnt/sd/CryptoKnight/bin /CryptoKnight
+  # Workaround so openssl doesn't complain
+  mkdir /usr/local/ssl
+  touch /usr/local/ssl/openssl.cnf
+
+  # boot CryptoKnight
+  /CryptoKnight/boot &
+else
+  #FIXME start watcher here...
+  echo "CryptoKnight booting." >> /var/log/CryptoKnight.log
+
+fi
+

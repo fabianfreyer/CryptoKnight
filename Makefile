@@ -31,6 +31,7 @@ install-card: toolchain libs
 	#install openssl binary
 	install lib/openssl/apps/openssl card/CryptoKnight/bin
 	#install sd-card scripts
+	install scripts/boot card/CryptoKnight/bin
 	install scripts/encrypt* card/CryptoKnight/bin
 	install scripts/watcher card/CryptoKnight/bin
 	install scripts/autorun.sh card
