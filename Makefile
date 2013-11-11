@@ -1,4 +1,4 @@
-/TOOLCHAIN=$(CURDIR)/build/toolchain/usr/
+TOOLCHAIN=$(CURDIR)/build/toolchain/usr/
 
 .EXPORT_ALL_VARIABLES:
 
@@ -45,4 +45,4 @@ card.tar.gz: install-card
 	cd ..
 
 host.tar.gz: install-host
-	ctar xvzf $@ host/
+	tar xvzf $@ host/
